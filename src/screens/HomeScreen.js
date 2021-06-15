@@ -7,7 +7,11 @@ import Input from "../components/Input";
 import Message from "../components/Message";
 import { SET_USER_NICKNAME_RESET } from "../constants/actions";
 
-const HomeScreen = () => {
+const capitalizeFirstLetter = (string) => {
+	return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+};
+
+const HomeScreen = ({ history }) => {
 	const [nickname, setNickname] = useState("");
 	const [isSubmited, setSubmit] = useState(false);
 	const dispatch = useDispatch();
@@ -15,10 +19,15 @@ const HomeScreen = () => {
 	const { error: usernameError } = useSelector((state) => state.user);
 
 	useEffect(() => {
-		if (isSubmited) {
-			dispatch(setUsername(nickname));
+		if (isSubmited && !usernameError) {
+			history.push("/game");
 		}
-	}, [nickname, dispatch, isSubmited]);
+	}, [isSubmited, usernameError, history]);
+
+	const submitUsername = () => {
+		setSubmit(true);
+		dispatch(setUsername(capitalizeFirstLetter(nickname)));
+	};
 
 	const alertClose = () => {
 		dispatch({ type: SET_USER_NICKNAME_RESET });
@@ -26,11 +35,12 @@ const HomeScreen = () => {
 	};
 
 	return (
-		<div className="homepage-container">
+		<div className="page-container">
 			<div className="homepage-content">
-				<h1>Worldcloud Game</h1>
+				<h1 className="page-title">Worldcloud Game</h1>
 				<Input setNickname={setNickname} />
-				<Button onCLick={() => setSubmit(true)} label="Submit" />
+
+				<Button onCLick={submitUsername} label="Submit" />
 			</div>
 			{usernameError ? (
 				<Message onClose={alertClose} variant="danger">

@@ -4,7 +4,7 @@ body {
 	font-family: "Neucha", cursive;
 }
 
-.homepage-container {
+.page-container {
 	display: flex;
 	text-align: center;
 	justify-content: center;
@@ -12,6 +12,14 @@ body {
 	flex-direction: column;
 	height: 100vh;
 	overflow: hidden;
+	font-family: "Neucha";
+
+	& > h1 {
+		text-transform: none;
+		margin-top: 20px;
+		font-size: 60px;
+		font-family: inherit;
+	}
 }
 
 .homepage-content {
@@ -20,10 +28,8 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	// max-width: 900px;
 
-	& > h1 {
-		font-family: "Neucha";
+	& > .page-title {
 		font-size: 110px;
 		margin-top:0;
 		margin-bottom: 10%;
@@ -54,10 +60,20 @@ body {
 	}
 }
 
+.game-container{
+	height: 600px;
+	width: 800px;
+	border: 1px solid #000;
+	border-radius: 10px;
+	margin: 10px;
+	position: relative;
+
+	
+}
 
 @media(max-width: 900px){
 	.homepage-container {
-		& > h1 {
+		& > .page-title {
 			font-size: 84px;
 		}
 	

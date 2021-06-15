@@ -18,7 +18,7 @@ export const userReducer = (state = { username: "" }, action) => {
 			};
 		case SET_USER_NICKNAME_RESET:
 			return {
-				...state,
+				username: "",
 				error: ""
 			};
 		default:
