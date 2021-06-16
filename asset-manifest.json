@@ -1,15 +1,18 @@
 {
   "files": {
-    "main.css": "/worldcloud-game/static/css/main.f0d78ce9.chunk.css",
-    "main.js": "/worldcloud-game/static/js/main.305783ea.chunk.js",
-    "main.js.map": "/worldcloud-game/static/js/main.305783ea.chunk.js.map",
+    "main.css": "/worldcloud-game/static/css/main.1e484a74.chunk.css",
+    "main.js": "/worldcloud-game/static/js/main.2df55219.chunk.js",
+    "main.js.map": "/worldcloud-game/static/js/main.2df55219.chunk.js.map",
     "runtime-main.js": "/worldcloud-game/static/js/runtime-main.6ab5c7fe.js",
     "runtime-main.js.map": "/worldcloud-game/static/js/runtime-main.6ab5c7fe.js.map",
-    "static/js/2.50142f07.chunk.js": "/worldcloud-game/static/js/2.50142f07.chunk.js",
-    "static/js/2.50142f07.chunk.js.map": "/worldcloud-game/static/js/2.50142f07.chunk.js.map",
+    "static/css/2.c6be082d.chunk.css": "/worldcloud-game/static/css/2.c6be082d.chunk.css",
+    "static/js/2.5a06c39d.chunk.js": "/worldcloud-game/static/js/2.5a06c39d.chunk.js",
+    "static/js/2.5a06c39d.chunk.js.map": "/worldcloud-game/static/js/2.5a06c39d.chunk.js.map",
     "index.html": "/worldcloud-game/index.html",
-    "static/css/main.f0d78ce9.chunk.css.map": "/worldcloud-game/static/css/main.f0d78ce9.chunk.css.map",
-    "static/js/2.50142f07.chunk.js.LICENSE.txt": "/worldcloud-game/static/js/2.50142f07.chunk.js.LICENSE.txt",
+    "static/css/2.c6be082d.chunk.css.map": "/worldcloud-game/static/css/2.c6be082d.chunk.css.map",
+    "static/css/main.1e484a74.chunk.css.map": "/worldcloud-game/static/css/main.1e484a74.chunk.css.map",
+    "static/js/2.5a06c39d.chunk.js.LICENSE.txt": "/worldcloud-game/static/js/2.5a06c39d.chunk.js.LICENSE.txt",
+    "static/media/flag-icon.css": "/worldcloud-game/static/media/zw.f5ceeff7.svg",
     "static/media/cloud.1b17da74.png": "/worldcloud-game/static/media/cloud.1b17da74.png",
     "static/media/cloud_bad.33193209.png": "/worldcloud-game/static/media/cloud_bad.33193209.png",
     "static/media/cloud_blue.68f72406.png": "/worldcloud-game/static/media/cloud_blue.68f72406.png",
@@ -18,8 +21,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.6ab5c7fe.js",
-    "static/js/2.50142f07.chunk.js",
-    "static/css/main.f0d78ce9.chunk.css",
-    "static/js/main.305783ea.chunk.js"
+    "static/css/2.c6be082d.chunk.css",
+    "static/js/2.5a06c39d.chunk.js",
+    "static/css/main.1e484a74.chunk.css",
+    "static/js/main.2df55219.chunk.js"
   ]
 }
