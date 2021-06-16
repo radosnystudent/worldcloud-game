@@ -1,55 +1,111 @@
 const data = {
-	firstpack: {
-		question: "Select all animals",
-		all_words: [
-			"hole",
-			"sofa",
-			"pear",
-			"tiger",
-			"oatmeal",
-			"square",
-			"nut",
-			"cub",
-			"shirt",
-			"tub",
-			"passenger",
-			"cow"
-		],
-		good_words: ["tiger", "cow"]
-	},
-	secondpack: {
-		question: "Select all colors",
-		all_words: [
-			"jeans",
-			"existence",
-			"ink",
-			"red",
-			"blue",
-			"yellow",
-			"laugh",
-			"behavior",
-			"expansion",
-			"white",
-			"black",
-			"cakes"
-		],
-		good_words: ["red", "blue", "yellow", "white", "black"]
-	},
-	thirdpack: {
-		question: "Select all vehicles",
-		all_words: [
-			"belief",
-			"wire",
-			"car",
-			"bus",
-			"star",
-			"river",
-			"hat",
-			"skirt",
-			"train"
-		],
-		good_words: ["car", "bus", "train"]
-	}
+    gb: {
+        firstpack: {
+            question: "Select all animals",
+            all_words: [
+                "hole",
+                "sofa",
+                "pear",
+                "tiger",
+                "oatmeal",
+                "square",
+                "nut",
+                "cub",
+                "shirt",
+                "tub",
+                "passenger",
+                "cow",
+            ],
+            good_words: ["tiger", "cow"],
+        },
+        secondpack: {
+            question: "Select all colors",
+            all_words: [
+                "jeans",
+                "existence",
+                "ink",
+                "red",
+                "blue",
+                "yellow",
+                "laugh",
+                "behavior",
+                "expansion",
+                "white",
+                "black",
+                "cakes",
+            ],
+            good_words: ["red", "blue", "yellow", "white", "black"],
+        },
+        thirdpack: {
+            question: "Select all vehicles",
+            all_words: [
+                "belief",
+                "wire",
+                "car",
+                "bus",
+                "star",
+                "river",
+                "hat",
+                "skirt",
+                "train",
+            ],
+            good_words: ["car", "bus", "train"],
+        },
+    },
+    pl: {
+        firstpack: {
+            question: "Wybierz wszystkie zwierzęta",
+            all_words: [
+                "dziura",
+                "kanapa",
+                "gruszka",
+                "tygrys",
+                "kiwi",
+                "modny",
+                "orzech",
+                "czub",
+                "pilot",
+                "tuba",
+                "kowal",
+                "krowa",
+            ],
+            good_words: ["krowa", "tygrys", "kiwi"],
+        },
+        secondpack: {
+            question: "Wybierz wszystkie kolory",
+            all_words: [
+                "turkus",
+                "trzewia",
+                "nieobecny",
+                "czerwony",
+                "bladoniebieski",
+                "pomidorowa",
+                "opole",
+                "zachowanie",
+                "wahanie",
+                "przezroczysty",
+                "kamienny",
+                "sufit",
+                "szary",
+            ],
+            good_words: ["turkus", "czerwony", "bladoniebieski", "szary"],
+        },
+        thirdpack: {
+            question: "Wybierz wszystkie partykuły",
+            all_words: [
+                "bodaj",
+                "ale",
+                "tu",
+                "oraz",
+                "obok",
+                "nie",
+                "niech",
+                "tylko",
+                "czy",
+            ],
+            good_words: ["bodaj", "tu", "czy"],
+        },
+    },
 };
 
 export default data;

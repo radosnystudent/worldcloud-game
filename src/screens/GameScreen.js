@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import Word from "../components/Word";
 import { reset } from "../actions/userActions";
 import { generateAllPositions, submitAnswers } from "../utils/functions";
+import allText from "../data/textData";
 
 const GameScreen = ({ history }) => {
     const [score, setScore] = useState();
@@ -14,10 +15,13 @@ const GameScreen = ({ history }) => {
 
     const [gameGenerated, setGenerated] = useState(false);
     const { username } = useSelector((state) => state.user);
+    const { language } = useSelector((state) => state.game);
 
     useEffect(() => {
         if (!gameGenerated) {
-            const [twords, tquestion, tactualPack] = generateAllPositions();
+            const [twords, tquestion, tactualPack] = generateAllPositions(
+                language.code
+            );
             setWords(twords);
             setQuestion(tquestion);
             setPack(tactualPack);
@@ -35,7 +39,9 @@ const GameScreen = ({ history }) => {
             style={{ height: "100%" }}
         >
             <h1>{`Witaj ${username}!`}</h1>
-            <h3>Task: {question}</h3>
+            <h3>
+                {allText[language.code]["gamepage"]["title"]} {question}
+            </h3>
             {score ? (
                 <h3
                     className={
@@ -44,7 +50,7 @@ const GameScreen = ({ history }) => {
                             : "points points-fail"
                     }
                 >
-                    Your score: {score}
+                    {`${allText[language.code]["gamepage"]["score"]} ${score}`}
                 </h3>
             ) : null}
             <div className="game-container">
@@ -63,29 +69,60 @@ const GameScreen = ({ history }) => {
             </div>
 
             <div className="side-panel">
-                <h2>Rules</h2>
-                <p>
-                    Select all words that are answers to the question above
-                    board and hit button 'CHECK ANSWERS'.
-                </p>
+                <h2>{allText[language.code]["gamepage"]["rules_title"]}</h2>
+                <p>{allText[language.code]["gamepage"]["rules_text"]}</p>
                 <div className="separator"></div>
                 {score ? (
                     <p>
-                        Score ={" "}
-                        <span style={{ color: "#35ca4e" }}>(good answers)</span>{" "}
-                        * 2 - (
-                        <span style={{ color: "#bb303f" }}>wrong answers</span>{" "}
-                        +{" "}
+                        {
+                            allText[language.code]["gamepage"][
+                                "rules_score_part1"
+                            ]
+                        }{" "}
+                        <span style={{ color: "#35ca4e" }}>
+                            {
+                                allText[language.code]["gamepage"][
+                                    "rules_score_part2"
+                                ]
+                            }
+                        </span>{" "}
+                        {
+                            allText[language.code]["gamepage"][
+                                "rules_score_part3"
+                            ]
+                        }
+                        <span style={{ color: "#bb303f" }}>
+                            {
+                                allText[language.code]["gamepage"][
+                                    "rules_score_part4"
+                                ]
+                            }
+                        </span>{" "}
+                        {
+                            allText[language.code]["gamepage"][
+                                "rules_score_part5"
+                            ]
+                        }{" "}
                         <span style={{ color: "#6c6c6c" }}>
-                            correct words that were not marked
+                            {
+                                allText[language.code]["gamepage"][
+                                    "rules_score_part6"
+                                ]
+                            }
                         </span>
-                        ).
+                        {
+                            allText[language.code]["gamepage"][
+                                "rules_score_part7"
+                            ]
+                        }
                     </p>
                 ) : null}
             </div>
             <Button
-                onCLick={() => submitAnswers(actualPack, setScore)}
-                label="Check answers"
+                onCLick={() =>
+                    submitAnswers(actualPack, setScore, language.code)
+                }
+                label={allText[language.code]["gamepage"]["check_button"]}
             />
             <Button
                 onCLick={() => {

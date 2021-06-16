@@ -7,7 +7,7 @@ const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
 
-const generateAllPositions = () => {
+const generateAllPositions = (code) => {
     const allPos = [];
     if (window.innerWidth <= 600) {
         for (let i = 5; i <= 90; i += 10) {
@@ -32,18 +32,18 @@ const generateAllPositions = () => {
     const actualPack = packs[Math.floor(Math.random() * packs.length)];
 
     const output = [];
-    data[actualPack]["all_words"].map((word, idx) => {
+    data[code][actualPack]["all_words"].map((word, idx) => {
         return output.push({ key: word, pos: shuffledPos[idx] });
     });
 
-    return [output, data[actualPack]["question"], actualPack];
+    return [output, data[code][actualPack]["question"], actualPack];
 };
 
-const compareAnswers = (userAnswers, wordpack) => {
+const compareAnswers = (userAnswers, wordpack, code) => {
     const result = { good: [], bad: [] };
     const points = { good: 0, bad: 0 };
     userAnswers.forEach((answer) => {
-        if (!data[wordpack]["good_words"].includes(answer)) {
+        if (!data[code][wordpack]["good_words"].includes(answer)) {
             result["bad"].push(answer);
             points["bad"] += 1;
         } else {
@@ -52,17 +52,17 @@ const compareAnswers = (userAnswers, wordpack) => {
         }
     });
     points["bad"] +=
-        data[wordpack]["good_words"].length - result["good"].length;
+        data[code][wordpack]["good_words"].length - result["good"].length;
     points["good"] *= 2;
 
     return [
         result,
         points["good"] - points["bad"],
-        data[wordpack]["good_words"],
+        data[code][wordpack]["good_words"],
     ];
 };
 
-const submitAnswers = (actualPack, setScore) => {
+const submitAnswers = (actualPack, setScore, code) => {
     const answers = document.querySelectorAll(".word-container-active");
     const allWords = document.querySelectorAll(".word-container");
     allWords.forEach((word) => {
@@ -72,7 +72,8 @@ const submitAnswers = (actualPack, setScore) => {
     answers.forEach((answer) => userAnswers.push(answer.innerText));
     const [result, points, good_words] = compareAnswers(
         userAnswers,
-        actualPack
+        actualPack,
+        code
     );
 
     answers.forEach((answer) => {

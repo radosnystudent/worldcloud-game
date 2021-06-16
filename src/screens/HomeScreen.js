@@ -2,52 +2,81 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setUsername, reset } from "../actions/userActions";
+import { changeLanguage } from "../actions/gameActions";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Message from "../components/Message";
 import { capitalizeFirstLetter } from "../utils/functions";
+import allText from "../data/textData";
+import FlagIcon from "../data/flagIcon";
 
 const HomeScreen = ({ history }) => {
-	const [nickname, setNickname] = useState("");
-	const [isSubmited, setSubmit] = useState(false);
-	const dispatch = useDispatch();
+    const [nickname, setNickname] = useState("");
+    const [isSubmited, setSubmit] = useState(false);
+    const { language } = useSelector((state) => state.game);
+    const [flag, setFlag] = useState(language);
+    const dispatch = useDispatch();
 
-	const { error: usernameError } = useSelector((state) => state.user);
+    const { error: usernameError } = useSelector((state) => state.user);
 
-	useEffect(() => {
-		if (isSubmited && !usernameError) {
-			history.push("/game");
-		}
-	}, [isSubmited, usernameError, history]);
+    useEffect(() => {
+        if (isSubmited && !usernameError) {
+            history.push("/game");
+        }
+    }, [isSubmited, usernameError, history]);
 
-	const submitUsername = () => {
-		reset();
-		if (nickname) {
-			setSubmit(true);
-		}
-		dispatch(setUsername(capitalizeFirstLetter(nickname)));
-	};
+    const submitUsername = () => {
+        reset();
+        if (nickname) {
+            setSubmit(true);
+        }
+        dispatch(setUsername(capitalizeFirstLetter(nickname)));
+    };
 
-	const alertClose = () => {
-		reset();
-		setSubmit(false);
-	};
+    const alertClose = () => {
+        reset();
+        setSubmit(false);
+    };
 
-	return (
-		<div className="page-container">
-			<div className="homepage-content">
-				<h1 className="page-title">Worldcloud Game</h1>
-				<Input setNickname={setNickname} />
+    const swapLanguage = () => {
+        if (flag.code === "gb") {
+            const newLanguage = { code: "pl", size: "2x" };
+            setFlag(newLanguage);
+            dispatch(changeLanguage(newLanguage));
+        } else {
+            const newLanguage = { code: "gb", size: "2x" };
+            setFlag(newLanguage);
+            dispatch(changeLanguage(newLanguage));
+        }
+    };
 
-				<Button onCLick={submitUsername} label="Submit" />
-			</div>
-			{usernameError ? (
-				<Message onClose={alertClose} variant="danger">
-					{usernameError}
-				</Message>
-			) : null}
-		</div>
-	);
+    return (
+        <div className="page-container">
+            <div className="flag-wrapper" onClick={() => swapLanguage()}>
+                <FlagIcon
+                    code={flag.code}
+                    size={flag.size}
+                    className="flag-item"
+                />
+            </div>
+            <div className="homepage-content">
+                <h1 className="page-title">
+                    {allText[language.code]["homepage"]["title"]}
+                </h1>
+                <Input setNickname={setNickname} />
+
+                <Button
+                    onCLick={submitUsername}
+                    label={allText[language.code]["homepage"]["submit_button"]}
+                />
+            </div>
+            {usernameError ? (
+                <Message onClose={alertClose} variant="danger">
+                    {usernameError}
+                </Message>
+            ) : null}
+        </div>
+    );
 };
 
 export default HomeScreen;

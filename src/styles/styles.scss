@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Neucha:400,600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Akaya+Kanadaka:400,600&display=swap");
 
 body {
-    font-family: "Neucha", cursive;
+    font-family: "Akaya Kanadaka", cursive;
 }
 
 .page-container {
@@ -12,7 +12,8 @@ body {
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
-    font-family: "Neucha";
+    font-family: "Akaya Kanadaka";
+    position: relative;
 
     & > h1 {
         text-transform: none;
@@ -20,6 +21,17 @@ body {
         font-size: 60px;
         font-family: inherit;
     }
+}
+
+.flag-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.flag-item {
+    border: 1px solid #000;
+    cursor: pointer;
 }
 
 .points {
@@ -123,7 +135,7 @@ body {
 @media (max-width: 1100px) {
     .homepage-content {
         & > .page-title {
-            font-size: 64px;
+            font-size: 58px;
             overflow-wrap: break-word;
         }
 
