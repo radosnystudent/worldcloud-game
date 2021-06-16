@@ -9,7 +9,8 @@ export const userReducer = (state = { username: "" }, action) => {
 		case SET_USER_NICKNAME_SUCCESS:
 			return {
 				...state,
-				username: action.payload
+				username: action.payload,
+				error: ""
 			};
 		case SET_USER_NICKNAME_FAILURE:
 			return {

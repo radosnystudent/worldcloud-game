@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setUsername } from "../actions/userActions";
+import { setUsername, reset } from "../actions/userActions";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Message from "../components/Message";
-import { SET_USER_NICKNAME_RESET } from "../constants/actions";
-
-const capitalizeFirstLetter = (string) => {
-	return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-};
+import { capitalizeFirstLetter } from "../utils/functions";
 
 const HomeScreen = ({ history }) => {
 	const [nickname, setNickname] = useState("");
@@ -25,12 +21,15 @@ const HomeScreen = ({ history }) => {
 	}, [isSubmited, usernameError, history]);
 
 	const submitUsername = () => {
-		setSubmit(true);
+		reset();
+		if (nickname) {
+			setSubmit(true);
+		}
 		dispatch(setUsername(capitalizeFirstLetter(nickname)));
 	};
 
 	const alertClose = () => {
-		dispatch({ type: SET_USER_NICKNAME_RESET });
+		reset();
 		setSubmit(false);
 	};
 

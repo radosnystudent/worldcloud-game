@@ -1,6 +1,6 @@
 const data = {
 	firstpack: {
-		question: "select animals",
+		question: "Select all animals",
 		all_words: [
 			"hole",
 			"sofa",
@@ -18,7 +18,7 @@ const data = {
 		good_words: ["tiger", "cow"]
 	},
 	secondpack: {
-		question: "select colors",
+		question: "Select all colors",
 		all_words: [
 			"jeans",
 			"existence",
@@ -36,7 +36,7 @@ const data = {
 		good_words: ["red", "blue", "yellow", "white", "black"]
 	},
 	thirdpack: {
-		question: "select vehicles",
+		question: "Select all vehicles",
 		all_words: [
 			"belief",
 			"wire",

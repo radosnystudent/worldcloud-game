@@ -1,29 +1,15 @@
-// import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import Button from "../components/Button";
 import Word from "../components/Word";
-import { SET_USER_NICKNAME_RESET } from "../constants/actions";
-import data from "../data/data";
-
-// const packs = ["firstpack", "secondpack", "thirdpack"];
-
-/**
- * Returns a random integer between min (inclusive) and max (inclusive).
- * The value is no lower than min (or the next integer greater than min
- * if min isn't an integer) and no greater than max (or the next integer
- * lower than max if max isn't an integer).
- * Using Math.round() will give you a non-uniform distribution!
- */
-function getRandomInt(min, max) {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+import { reset } from "../actions/userActions";
+import { generateAllPositions, submitAnswers } from "../utils/functions";
+import { useState } from "react";
 
 const GameScreen = ({ history }) => {
+	const [score, setScore] = useState();
 	const { username } = useSelector((state) => state.user);
-	const dispatch = useDispatch();
+	const [words, question, actualPack] = generateAllPositions();
 
 	if (!username || username.length === 0) {
 		history.push("/");
@@ -32,29 +18,38 @@ const GameScreen = ({ history }) => {
 	return (
 		<div className="page-container" style={{ height: "100%" }}>
 			<h1>{`Witaj ${username}!`}</h1>
-
+			<h3>{question}</h3>
+			{score ? (
+				<h3
+					className={
+						score > 0
+							? "points points-success"
+							: "points points-fail"
+					}
+				>
+					Your score: {score}
+				</h3>
+			) : null}
 			<div className="game-container">
-				{data["firstpack"]["all_words"].map((item, idx) => {
+				{words.map((word, idx) => {
 					return (
 						<Word
-							top={`${getRandomInt(0, 90)}%`}
-							left={`${getRandomInt(0, 90)}%`}
+							top={`${word.pos[0]}%`}
+							left={`${word.pos[1]}%`}
 							key={`word-${idx}`}
 						>
-							{item}
+							{word.key}
 						</Word>
 					);
 				})}
 			</div>
 			<Button
-				onCLick={() => {
-					console.log("UwU");
-				}}
+				onCLick={() => submitAnswers(actualPack, setScore)}
 				label="Check answers"
 			/>
 			<Button
 				onCLick={() => {
-					dispatch({ type: SET_USER_NICKNAME_RESET });
+					reset();
 					history.push("/");
 				}}
 				label="Menu"

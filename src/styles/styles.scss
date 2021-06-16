@@ -22,6 +22,19 @@ body {
 	}
 }
 
+.points {
+	padding: 10px;
+	text-decoration: underline;
+
+	&-success {
+		color: green;
+	}
+
+	&-fail{
+		color: #6F1E51;
+	}
+}
+
 .homepage-content {
 	display: flex;
 	text-align: center;

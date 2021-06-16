@@ -1,6 +1,6 @@
 .my-btn {
 	display: block;
-	margin: 40px;
+	margin: 20px;
 	padding: 10px 25px;
 	border-radius: 20px;
 	font-size: 34px;
@@ -30,17 +30,35 @@
 	width: 40%;
 }
 
-.word {
+.word-container{
 	position: absolute;
-	font-weight: bold;
-	font-size: 24px;
+	background-image: url("/img/cloud.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 125px;
+	height: 85px;
+	text-align: center;
 	cursor: pointer;
+	color: #000;
 
-	&-black{
+	&-active{
+		background-image: url("/img/cloud-blue.png");
+		color: white;
+	}
+
+	&-bad {
+		background-image: url("/img/cloud-bad.png");
 		color: #000;
 	}
 
-	&-red {
-		color: red;
+	&-good{
+		background-image: url("/img/cloud-good.png");
+		color: #000;
 	}
+}
+
+.word {
+	font-weight: bold;
+	font-size: 24px;
+	transform: translate(-5%, 90%);
 }
