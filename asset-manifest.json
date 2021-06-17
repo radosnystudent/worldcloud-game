@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/worldcloud-game/static/css/main.0c2d0c16.chunk.css",
-    "main.js": "/worldcloud-game/static/js/main.2df55219.chunk.js",
-    "main.js.map": "/worldcloud-game/static/js/main.2df55219.chunk.js.map",
+    "main.js": "/worldcloud-game/static/js/main.f5c1c4d0.chunk.js",
+    "main.js.map": "/worldcloud-game/static/js/main.f5c1c4d0.chunk.js.map",
     "runtime-main.js": "/worldcloud-game/static/js/runtime-main.6ab5c7fe.js",
     "runtime-main.js.map": "/worldcloud-game/static/js/runtime-main.6ab5c7fe.js.map",
     "static/css/2.c6be082d.chunk.css": "/worldcloud-game/static/css/2.c6be082d.chunk.css",
@@ -24,6 +24,6 @@
     "static/css/2.c6be082d.chunk.css",
     "static/js/2.5a06c39d.chunk.js",
     "static/css/main.0c2d0c16.chunk.css",
-    "static/js/main.2df55219.chunk.js"
+    "static/js/main.f5c1c4d0.chunk.js"
   ]
 }
