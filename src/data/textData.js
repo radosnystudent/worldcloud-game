@@ -2,10 +2,11 @@ const allText = {
     pl: {
         homepage: {
             title: "Gra chmura słów",
-            placeholder: "Wprowadź swój nick tutaj...",
+            placeholder: "Wprowadź swoją nazwę tutaj...",
             submit_button: "Zatwierdź",
         },
         gamepage: {
+            welcome: "Witaj ",
             title: "Zadanie:",
             score: "Twoje punkty: ",
             rules_title: "Zasady",
@@ -29,6 +30,7 @@ const allText = {
             submit_button: "Submit",
         },
         gamepage: {
+            welcome: "Hello ",
             title: "Task:",
             score: "Your score: ",
             rules_title: "Rules",

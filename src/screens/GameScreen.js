@@ -38,10 +38,14 @@ const GameScreen = ({ history }) => {
             className="page-container game-interface-container"
             style={{ height: "100%" }}
         >
-            <h1>{`Witaj ${username}!`}</h1>
+            <h1>{`${
+                allText[language.code]["gamepage"]["welcome"]
+            } ${username}!`}</h1>
+
             <h3>
                 {allText[language.code]["gamepage"]["title"]} {question}
             </h3>
+
             {score ? (
                 <h3
                     className={
@@ -53,6 +57,7 @@ const GameScreen = ({ history }) => {
                     {`${allText[language.code]["gamepage"]["score"]} ${score}`}
                 </h3>
             ) : null}
+
             <div className="game-container">
                 {words &&
                     words.map((word, idx) => {
@@ -72,6 +77,7 @@ const GameScreen = ({ history }) => {
                 <h2>{allText[language.code]["gamepage"]["rules_title"]}</h2>
                 <p>{allText[language.code]["gamepage"]["rules_text"]}</p>
                 <div className="separator"></div>
+
                 {score ? (
                     <p>
                         {
@@ -118,12 +124,14 @@ const GameScreen = ({ history }) => {
                     </p>
                 ) : null}
             </div>
+
             <Button
                 onCLick={() =>
                     submitAnswers(actualPack, setScore, language.code)
                 }
                 label={allText[language.code]["gamepage"]["check_button"]}
             />
+
             <Button
                 onCLick={() => {
                     reset();

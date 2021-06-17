@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setUsername, reset } from "../actions/userActions";
@@ -11,13 +11,15 @@ import allText from "../data/textData";
 import FlagIcon from "../data/flagIcon";
 
 const HomeScreen = ({ history }) => {
-    const [nickname, setNickname] = useState("");
     const [isSubmited, setSubmit] = useState(false);
     const { language } = useSelector((state) => state.game);
     const [flag, setFlag] = useState(language);
     const dispatch = useDispatch();
 
-    const { error: usernameError } = useSelector((state) => state.user);
+    const { error: usernameError, username } = useSelector(
+        (state) => state.user
+    );
+    const [nickname, setNickname] = useState(username);
 
     useEffect(() => {
         if (isSubmited && !usernameError) {
@@ -25,16 +27,16 @@ const HomeScreen = ({ history }) => {
         }
     }, [isSubmited, usernameError, history]);
 
-    const submitUsername = () => {
+    const submitUsername = useCallback(() => {
         reset();
         if (nickname) {
             setSubmit(true);
         }
         dispatch(setUsername(capitalizeFirstLetter(nickname)));
-    };
+    }, [nickname]);
 
     const alertClose = () => {
-        reset();
+        dispatch(reset());
         setSubmit(false);
     };
 
@@ -63,7 +65,7 @@ const HomeScreen = ({ history }) => {
                 <h1 className="page-title">
                     {allText[language.code]["homepage"]["title"]}
                 </h1>
-                <Input setNickname={setNickname} />
+                <Input value={nickname} setNickname={setNickname} />
 
                 <Button
                     onCLick={submitUsername}
